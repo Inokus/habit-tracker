@@ -6,7 +6,12 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      redirect: `/day/${new Date().toISOString().slice(0, 10)}`
+    },
+    {
+      path: '/day/:date',
       name: 'home',
+      props: true,
       component: HomeView
     }
   ]
