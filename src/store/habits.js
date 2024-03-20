@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { ref, watch } from 'vue';
 import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
@@ -32,9 +33,33 @@ export const useHabitsStore = defineStore('habits', () => {
     const uuid = uuidv4();
     habits.value.push({
       id: uuid,
-      name: habit
+      name: habit,
+      isEditing: false,
+      stoppedAt: null
     });
     habitsStateStore.addHabitState(uuid);
+  };
+
+  const toggleEditing = habit => {
+    habit.isEditing = !habit.isEditing;
+  };
+
+  const updateHabit = (habit, newName) => {
+    habit.name = newName;
+  };
+
+  const resumeHabit = habit => {
+    habit.stoppedAt = null;
+  };
+
+  const stopHabit = habit => {
+    habit.stoppedAt = habitsStateStore.selectedDate;
+  };
+
+  const removeHabit = habit => {
+    habitsStateStore.removeHabitState(habit.id);
+    const index = habits.value.indexOf(habit);
+    habits.value.splice(index, 1);
   };
 
   getStorage();
@@ -43,5 +68,5 @@ export const useHabitsStore = defineStore('habits', () => {
     updateStorage();
   });
 
-  return { habits, addHabit };
+  return { habits, addHabit, toggleEditing, updateHabit, resumeHabit, stopHabit, removeHabit };
 });

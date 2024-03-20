@@ -37,6 +37,15 @@ const addHabit = () => {
     habit.value = '';
   }
 };
+
+const shouldRenderItem = item => {
+  if (item.stoppedAt) {
+    if (new Date(item.stoppedAt) < new Date(habitsStateStore.selectedDate)) {
+      return false;
+    }
+  }
+  return true;
+};
 </script>
 
 <template>
@@ -48,8 +57,14 @@ const addHabit = () => {
     <div>
       <div v-for="habit in habitsStore.habits" :key="habit.id">
         <HabitItem
+          v-if="shouldRenderItem(habit)"
           :habit="habit"
-          @toggle-completed="habitsStateStore.toggleCompletedState(habit.id)"
+          @toggle-completed="habitsStateStore.toggleCompleted(habit.id)"
+          @edit-habit="habitsStore.toggleEditing(habit)"
+          @update-habit="habitsStore.updateHabit(habit, $event)"
+          @resume-habit="habitsStore.resumeHabit(habit)"
+          @stop-habit="habitsStore.stopHabit(habit)"
+          @remove-habit="habitsStore.removeHabit(habit)"
         />
       </div>
     </div>

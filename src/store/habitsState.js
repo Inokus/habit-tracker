@@ -51,7 +51,7 @@ export const useHabitsStateStore = defineStore('habitsState', () => {
     }
   };
 
-  const toggleCompletedState = id => {
+  const toggleCompleted = id => {
     habitsState.value[selectedDate.value][id] = !habitsState.value[selectedDate.value][id];
   };
 
@@ -68,6 +68,6 @@ export const useHabitsStateStore = defineStore('habitsState', () => {
     addHabitState,
     removeHabitState,
     addHabitsState,
-    toggleCompletedState
+    toggleCompleted
   };
 });
