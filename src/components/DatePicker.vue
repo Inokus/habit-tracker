@@ -11,7 +11,7 @@ const router = useRouter();
 const habitsStore = useHabitsStore();
 const habitsStateStore = useHabitsStateStore();
 
-const displayedWeekDay = ref(habitsStateStore.currentDate);
+const displayedWeekDay = ref(habitsStateStore.selectedDate);
 
 const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const months = [
