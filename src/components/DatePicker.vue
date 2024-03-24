@@ -59,6 +59,7 @@ const changeWeek = next => {
 const selectDate = day => {
   router.push({ path: `/day/${day}` });
   habitsStateStore.selectedDate = new Date(day);
+  habitsStore.turnOffEditing();
 };
 
 const changeToToday = () => {

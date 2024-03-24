@@ -63,11 +63,30 @@ export const useHabitsStore = defineStore('habits', () => {
     habits.value.splice(index, 1);
   };
 
+  const turnOffEditing = () => {
+    if (habits.value.length) {
+      habits.value.forEach(habit => {
+        if (habit.isEditing) habit.isEditing = false;
+      });
+    }
+  };
+
   getStorage();
 
   watch(habits.value, () => {
     updateStorage();
   });
 
-  return { habits, addHabit, toggleEditing, updateHabit, resumeHabit, stopHabit, removeHabit };
+  turnOffEditing();
+
+  return {
+    habits,
+    addHabit,
+    toggleEditing,
+    updateHabit,
+    resumeHabit,
+    stopHabit,
+    removeHabit,
+    turnOffEditing
+  };
 });
