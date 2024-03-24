@@ -1,1 +1,66 @@
 @import url('./base.css');
+
+:root {
+  --base-font-family: 'Tilt Neon', sans-serif;
+  --base-text-color: #4e4e4e;
+  --primary-color: #ddd;
+  --secondary-color: #eee;
+  --success-color: #75ae65;
+  --warning-color: #ffa200;
+  --danger-color: #f74545;
+  --edit-color: #006fca;
+}
+
+body,
+input,
+button {
+  font-family: var(--base-font-family);
+  font-size: 1rem;
+  color: var(--base-text-color);
+}
+
+button {
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+button:active {
+  opacity: 0.8;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.success {
+  color: var(--success-color);
+}
+
+.warning {
+  color: var(--warning-color);
+}
+
+.danger {
+  color: var(--danger-color);
+}
+
+.edit {
+  color: var(--edit-color);
+}
+
+.success-hover:hover {
+  color: var(--success-color);
+}
+
+.warning-hover:hover {
+  color: var(--warning-color);
+}
+
+.danger-hover:hover {
+  color: var(--danger-color);
+}
+
+.edit-hover:hover {
+  color: var(--edit-color);
+}
