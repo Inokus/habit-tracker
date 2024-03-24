@@ -49,6 +49,7 @@ defineEmits([
     <div class="name">
       <input
         type="text"
+        name="habit-name"
         aria-label="habit name"
         v-if="habit.isEditing"
         :value="habit.name"
@@ -123,7 +124,7 @@ button:hover {
   align-items: center;
   column-gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background-color: (var(--primary-color));
+  background-color: var(--primary-color);
   border-radius: 6px;
 }
 
